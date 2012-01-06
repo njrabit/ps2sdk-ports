@@ -169,7 +169,10 @@ static int PS2_VideoInit(SDL_VideoDevice *device, SDL_PixelFormat *vformat)
 	}
 
 	printf("SDL: initializing gsKit in %s mode\n", pal ? "PAL" : "NTSC");
-	gsGlobal = gsKit_init_global(pal ? GS_MODE_PAL : GS_MODE_NTSC);
+	
+	/* gsKit changed? gsKit_init_global macro accepts no param */
+	//gsGlobal = gsKit_init_global(pal ? GS_MODE_PAL : GS_MODE_NTSC);
+	gsGlobal = gsKit_init_global();
 
 	if (gsGlobal == NULL)
 	{
